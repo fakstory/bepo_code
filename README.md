@@ -2,30 +2,26 @@ doc here:
 https://askubuntu.com/questions/482678/how-to-add-a-new-keyboard-layout-custom-keyboard-layout-definition
 
 # 1 evdev
-/usr/share/X11/xkb/rules/evdev.xml
-or cp this file
+copy the content of evdev.txt in /usr/share/X11/xkb/rules/evdev.xml
+or run:
 sudo cp ./evdev.xml /usr/share/X11/xkb/rules/evdev.xml
 
 
 # 2 Symbols
-copy the file in :
-/usr/share/X11/xkb/symbols
+copy the content of fr.txt in /usr/share/X11/xkb/symbols/fr
 OR
-need to launch the reloadxkb.sh
+cp fr /usr/share/X11/xkb/symbols/fr
+
+then, run those command:
+dpkg-reconfigure xkb-data
+systemctl restart keyboard-setup
+
+you may have to login/out to apply correctly.
 
 
+Now, you should see the layout in keyboard layout under fr bepo.
+You can test with:
+setxkbmap fr bepo_code
 
-
-# Use xmodmaps (Gui xkeycaps) instead!!!
-https://unix.stackexchange.com/questions/91355/shortcut-keys-that-are-independent-to-keyboard-layout
-https://superuser.com/questions/385748/binding-superc-superv-to-copy-and-paste
-
-# Some Problem found with atom using xkb only...
-To have same shortcut than the QWERTY Layout, use
-investigate shortcut, it seems it is related to the default layout (the one that 
-the system has booted with.)
-for example, if I load the Colemak layout, the shortcut are still in bepo! There is
-some hope!
-https://github.com/atom/atom/issues/13170
-https://github.com/atom/atom-keymap/pull/164
-
+Have a look at this script: 
+reloadxkb.sh
