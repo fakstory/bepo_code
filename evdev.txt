@@ -1,0 +1,6 @@
+        <variant>
+          <configItem>
+            <name>bepo_code</name>
+            <description>French (Bepo, ergonomic, Programmer)</description>
+          </configItem>
+        </variant>
