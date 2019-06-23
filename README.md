@@ -1,3 +1,18 @@
+
+# To install
+`cd unix`
+`sudo make`
+`cd ../bepo_code`
+`make`
+
+
+
+
+
+
+
+# OLD WAY, depecrated, not sustainable with arch system (a system upgrade replace those files...
+
 doc here:
 https://askubuntu.com/questions/482678/how-to-add-a-new-keyboard-layout-custom-keyboard-layout-definition
 
