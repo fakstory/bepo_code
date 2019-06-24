@@ -102,6 +102,8 @@ static int modifier_bit(int key) {
             return 4;     // l-alt
         case 125:
             return 8;   // win
+        // case 133:
+        //     return 16;   // win
     }
     return 0;
 }
@@ -111,76 +113,105 @@ static int qwerty2dvorak(int key) {
     switch (key) {
         //case querty_key
             //return dvorak_location_of_the_querty_key
-        case 9:// -
-            return 12;
-        case 8:// +
-            return 13;
-        case 48://b
-            return 16;
-        case 27://
-            return 17;
-        case 25://e
-            return 18;
-        case 24:
-            return 19;
+        case 0:
+        case 2:// 1
+            return 2;// "
+        case 3:// 2
+            return 3;// (
+        case 4: // 3
+            return 4;// )
+        case 5: // 4
+            return 5;// <
+        case 6: // 5
+            return 6;// >
+        case 7: // 6
+            return 7;// @
+        case 8:// 7
+            return 8;// + 
+        case 9:// 8
+            return 9; // -
+        case 10:// 9
+            return 10; // /
+        case 11:
+            return 11; // %
+        case 12:// - (Le '-' du qwerty est 12, mapped sur la touche 7, keycode 9)
+            return 9;//- (but '=' in bepo, '$' in bepo_code)
+        case 13:// +
+            return 41;//= (but '%' in bepo, '% in bepo_code)
+        case 14:
+            return 14;
+        case 15:
+            return 15;
+        case 16://q
+            return 50; // bepo location of 'q' key 
+        case 17://w
+            return 27; //bepo location of the w key
+        case 18://e
+            return 33;
+        case 19://r
+            return 38;
         case 20://è
             return 20;
-        case 7://^
-            return 21;
-        case 47://v
-            return 22;
-        case 32://d
-            return 23;
-        case 38://l
-            return 24;
-        case 36://t
-            return 25;
-        case 44://z
-            return 26;
-        case 17://w
-            return 27;
-        case 30://a
-            return 30;
+        case 21://y
+            return 45;
         case 22://u
             return 47;
         case 23://i
             return 32;
-        case 18://e
-            return 33;
-        case 51://,
-            return 34;
-        case 46://c
-            return 35;
-        case 43://t
-            return 20;
+        case 24:
+            return 19;
+        case 25://e
+            return 18;
+        //26
+        case 27://
+            return 17;
+        //28
+        //29
+        case 30://a
+            return 30;
         case 31://s
             return 37;
-        case 19://r
-            return 38;
-        case 49://n
-            return 39;
-        case 50://m
-            return 40;
-        case 40://à
-            return 44;
-        case 21://y
-            return 45;
-        case 45://x
-            return 46;
-        case 52://.
-            return 47;
-        case 37://k
-            return 48;
-        case 53://'
-            return 49;
-        case 16://q
-            return 50;
+        case 32://d
+            return 23;
+        case 33://f
+            return 53;
         case 34://g
             return 51;
         case 35://h
             return 52;
-        case 33://f
-            return 53;
+        case 36://t
+            return 25;
+        case 37://k
+            return 48;
+        case 38://l
+            return 24;
+        //39
+        case 40://à
+            return 44;
+        //41
+        //42
+        case 43://t
+            return 20;
+        case 44://z
+            return 26;
+        case 45://x
+            return 46;
+        case 46://c
+            return 35;
+        case 47://v
+            return 22;
+        case 48://b
+            return 16;
+        case 49://n
+            return 39;
+        case 50://m
+            return 40;
+        case 51://,
+            return 34;
+        case 52://.
+            return 47;
+        case 53://'
+            return 49;
     }
     return key;
 }

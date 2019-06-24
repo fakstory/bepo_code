@@ -3,7 +3,7 @@ LIBS = -lm -lX11
 CC = gcc
 CFLAGS = -g -Wall
 
-.PHONY: default all clean
+.PHONY: default all clean update
 
 default: $(TARGET)
 all: default
@@ -20,10 +20,8 @@ $(TARGET): $(OBJECTS)
 	$(CC) $(OBJECTS) -Wall $(LIBS) -o $@
 
 clean:
-	-rm -f *.o
-	-rm -f $(TARGET)
 
-install:
+install: dvorak.o
 	cp $(TARGET) /usr/bin/
 	cp 80-dvorak.rules /etc/udev/rules.d/
 	cp dvorak@.service /etc/systemd/system/
@@ -32,6 +30,7 @@ install:
 	sudo systemctl restart udev.service
 	systemctl daemon-reload
 	systemctl start dvorak@event3.service
+
 remove:
 	systemctl stop dvorak@event3.service
 	rm -f /usr/bin/$(TARGET)
@@ -40,3 +39,6 @@ remove:
 	sudo udevadm control --reload
 	sudo systemctl restart udev.service
 	systemctl daemon-reload
+	touch .remove
+
+update: .remove, .install
