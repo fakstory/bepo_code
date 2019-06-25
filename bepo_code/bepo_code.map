@@ -30,7 +30,7 @@ keycode  58 = Caps_Lock
 keycode  97 = Control
 
 # First row
-keycode  41 = dollar numbersign       U+2013  U+00b6
+keycode  41 = equal numbersign       U+2013  U+00b6
          Alt             keycode  41 = Meta_dollar
          Alt Shift       keycode  41 = Meta_numbersign
 
@@ -81,10 +81,10 @@ keycode  11 = +asterisk +zero         U+00d7  U+00be
          Alt             keycode  11 = Meta_asterisk
          Alt Shift       keycode  11 = Meta_zero
 
-keycode  12 = equal     U+00b0        U+2260  U+2032
+keycode  12 = percent     U+00b0        U+2260  U+2032
          Alt             keycode  12 = Meta_equal
 
-keycode  13 = percent   grave         U+2030  U+2033
+keycode  13 = dollar   grave         U+2030  U+2033
          Alt             keycode  13 = Meta_percent
          Alt Shift       keycode  13 = Meta_grave
 
