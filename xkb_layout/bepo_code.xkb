@@ -54,8 +54,8 @@ xkb_symbols "bepo_code" {
     key <AB01> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [          agrave,       Agrave,      backslash                 ] }; // à À \
     key <AB02> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [               y,            Y,      braceleft, leftsinglequotemark  ] }; // y Y { ‘
     key <AB03> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [               x,            X,     braceright, rightsinglequotemark ] }; // x X } ’
-    key <AB04> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [          period,        colon,       ellipsis, periodcentered ] }; // . : … ·
-    key <AB05> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [               k,            K,     asciitilde                 ] }; // k K ~
+    key <AB04> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [          period,        colon,     asciitilde, periodcentered] }; // . : ~ ~/
+    key <AB05> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [               k,            K,     slash, ellipsis  ] }; // k K … ·
     key <AB06> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [      apostrophe,     question,   questiondown,      dead_hook ] }; // ' ? ¿ ̉
     key <AB07> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [               q,            Q, dead_abovering,  dead_belowdot ] }; // q Q ˚ ̣
     key <AB08> { type[group1] = "FOUR_LEVEL_SEMIALPHABETIC", [               g,            G,     dead_greek                 ] }; // g G µ
