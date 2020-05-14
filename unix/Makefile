@@ -27,9 +27,10 @@ install: dvorak.o
 	cp dvorak@.service /etc/systemd/system/
 	sudo udevadm control --reload-rules
 	sudo udevadm trigger
-	# sudo systemctl restart udev.service
+	# sudo systemctl restart udev.servicep
 	systemctl daemon-reload
-	#-systemctl start dvorak@event3.service
+	-systemctl start dvorak@event3.service
+	localectl set-keymap --no-convert bepo_code
 
 remove:
 	-systemctl stop dvorak@event3.service
