@@ -1,45 +1,36 @@
+#pkg-config from: https://www.geany.org/manual/gtk/glib/glib-compiling.html
+#https://github.com/joprietoe/gdbus/blob/master/Makefile
+#https://stackoverflow.com/questions/51269129/minimal-gdbus-client
 TARGET = dvorak
-LIBS = -lm -lX11
 CC = gcc
-CFLAGS = -g -Wall
+CFLAGS = -Wall -O3
 
-.PHONY: default all clean update
+.PHONY: default all clean install uninstall
 
-default: $(TARGET)
-all: default
+default: all
 
-OBJECTS = $(patsubst %.c, %.o, $(wildcard *.c))
-HEADERS = $(wildcard *.h)
-
-%.o: %.c $(HEADERS)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-.PRECIOUS: $(TARGET) $(OBJECTS)
-
-$(TARGET): $(OBJECTS)
-	$(CC) $(OBJECTS) -Wall $(LIBS) -o $@
+all: dvorak.c
+	$(CC) $(CFLAGS) -o $(TARGET) dvorak.c
 
 clean:
+	-rm -f *.o
+	-rm -f $(TARGET)
 
-install: dvorak.o
-	cp $(TARGET) /usr/bin/
+install:
+	sudo touch /etc/modules-load.d/uinput.conf
+	sudo echo "uinput" > /etc/modules-load.d/uinput.conf
+
+	cp dvorak /usr/local/bin/
 	cp 80-dvorak.rules /etc/udev/rules.d/
 	cp dvorak@.service /etc/systemd/system/
-	sudo udevadm control --reload-rules
-	sudo udevadm trigger
-	# sudo systemctl restart udev.servicep
+	udevadm control --reload
+	systemctl restart systemd-udevd.service
 	systemctl daemon-reload
-	-systemctl start dvorak@event3.service
-	localectl set-keymap --no-convert bepo_code
 
-remove:
-	-systemctl stop dvorak@event3.service
-	rm -f /usr/bin/$(TARGET)
-	rm -f /etc/udev/rules.d/80-dvorak.rules 
-	rm -f /etc/systemd/system/dvorak@.service
-	sudo udevadm control --reload
-	# sudo systemctl restart udev.service
+uninstall:
+	rm /usr/local/bin/dvorak
+	rm /etc/udev/rules.d/80-dvorak.rules
+	rm /etc/systemd/system/dvorak@.service
+	udevadm control --reload
+	systemctl restart systemd-udevd.service
 	systemctl daemon-reload
-	touch .remove
-
-update: .remove, .install

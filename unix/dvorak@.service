@@ -2,7 +2,8 @@
 Description=Dvorak Virtual Keyboard
 
 [Service]
-ExecStart=/usr/bin/dvorak /dev/input/%i keyb k360
+ExecStart=/usr/bin/dvorak /dev/input/%i -m "AT" 
+
 
 [Install]
 WantedBy=multi-user.target

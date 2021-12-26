@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cp /usr/share/X11/xkb/symbols/fr ./Backup/fr_backup
+cp -p /usr/share/X11/xkb/symbols/fr ./Backup/fr_backup
 sudo cp ./fr /usr/share/X11/xkb/symbols/fr
 
 cp /usr/share/X11/xkb/rules/evdev.xml ./Backup/evdev.xml_backup
